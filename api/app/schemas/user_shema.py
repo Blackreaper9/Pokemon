@@ -13,7 +13,7 @@ class UserSchema(Schema):
         required = True,
         validate=lambda x: "@utma.edu.mx" in x,
         error_messages={
-            "required": "La contraseña es requerida"
+            "required": "El nombre es requerido"
         } 
     )
 
@@ -21,7 +21,7 @@ class UserSchema(Schema):
         required = True,
         validate=lambda x: len(x) > 0,
         error_messages={
-            "required": "El nombre es requerido"
+            "required": "La contraseña es requerida"
         } 
         
     )

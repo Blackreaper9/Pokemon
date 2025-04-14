@@ -2,7 +2,7 @@ from app.models.pokemon import Pokemon
 from app.models.pokemon_favorities import PokemonFavorites
 from app.models.user import User
 
-class ModelFavorite():
+class ModelFactory():
     @staticmethod
     def get_model(colection_name):
         models = {

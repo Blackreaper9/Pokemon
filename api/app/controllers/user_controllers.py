@@ -65,4 +65,6 @@ def delete():
 def get_user():
     user_id = get_jwt_identity()
     user = user_model.find_by_id(ObjectId(user_id))
-    return RM.succes(user)
+    if not user:
+        return RM.error("El usuario no existe")
+    return RM.success(user)

@@ -6,17 +6,16 @@ from flask_jwt_extended import jwt_required
 
 bp = Blueprint("pokemons",__name__, url_prefix="/pokemons")
 RM= ResponseManager()
-POKEMOM_MODEL = ModelFavorite.get_model("pokemons")
-
-@bp.route("/", methods=["GET"])
-@jwt_required()
-def get_all():
-    data = POKEMOM_MODEL.find_all()
-    return RM.succes(data)
-
+POKEMON_MODEL = ModelFavorite.get_model("pokemons")
 
 @bp.route("/get/<string:pokemon_id>", methods=["GET"])
 @jwt_required()
 def get_pokemon(pokemon_id):
-    pokemon = POKEMOM_MODEL.find_by_id(ObjectId(pokemon_id))
-    return RM.succes(pokemon)
+    pokemon = POKEMON_MODEL.find_by_id(ObjectId(pokemon_id))
+    return RM.success(pokemon)
+
+@bp.route("/", methods=["GET"])
+@jwt_required()
+def get_all():
+    data = POKEMON_MODEL.find_all()
+    return RM.success(data)
